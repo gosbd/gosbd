@@ -56,7 +56,9 @@ func main() {
 
 - [ ] Add support for more languages.
 - [ ] Implement text cleaner.
-- [ ] Add benchmark test
+- [ ] Add benchmark test.
+- [ ] Setup GitHub Action for testing.
+- [ ] Setup Codecov for monitoring test coverage.
 
 ## Language Support Roadmap
 
