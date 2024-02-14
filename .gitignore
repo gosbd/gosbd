@@ -1,0 +1,5 @@
+# debug
+__debug*
+
+# Goland
+.idea/
