@@ -13,11 +13,13 @@ gosbd is a library for segmenting text into sentences inspired by [pySBD](https:
 - **High Accuracy**: Offers high accuracy in sentence segmentation. For more details, see [pySBD](https://github.com/nipunsadvilkar/pySBD).
 - **Non-Destructive Segmentation**: Segments text into sentences without altering the original content.
 - **Language-Specific Configuration**: Adaptable to handle punctuation rules specific to different languages.
-- **Text Cleaning**: Equipped with features to manage and clean noisy text, including (To be implemented)):
+- **Text Cleaning**: Equipped with features to manage and clean noisy text, including:
     - Handling irregular newline characters and spacing
     - Processing Tables of Contents
     - Recognizing and managing URLs and HTML tags
     - Dealing with sentences that are delimited without any space
+
+_Note: Text Cleaning feature is to be implemented. Contributions are greatly welcomed._
 
 ## Installation
 
