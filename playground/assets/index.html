@@ -18,6 +18,11 @@
             h1, h2 {
                 color: #333;
             }
+            .caption {
+                font-size: 14px;
+                color: #666;
+                text-align: left;
+            }
             label {
                 display: block;
                 margin-bottom: 5px;
@@ -106,7 +111,10 @@
     <body>
         <div class="container">
             <div class="header">
-                <h1>GoSBD Playground</h1>
+                <div>
+                    <h1>GoSBD Playground</h1>
+                    <span class="caption">GoSBD is a library for segmenting text into sentences for Go. It is rule-based and works out-of-the-box.</span>
+                </div>
                 <div>
                     <div class="github-star-button">
                     <iframe src="https://ghbtns.com/github-btn.html?user=gosbd&repo=gosbd&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
@@ -124,7 +132,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="text">Text to segment</label><br />
+                    <label for="text">Text to segment</label>
                     <textarea id="text" name="text" rows="4" cols="50">Hello world! GoSBD.</textarea>
                 </div>
                 <button onclick="runSBD()">Segment!</button>
