@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>GoSBD Playground</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="wasm_exec.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .container {
+                max-width: 800px;
+                margin: auto;
+            }
+            h1, h2 {
+                color: #333;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            select, textarea, button {
+                width: 100%;
+                max-width: 100%;
+                padding: 10px;
+                margin-bottom: 20px;
+                box-sizing: border-box;
+                display: block;
+            }
+            button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            #result {
+                list-style-type: none;
+                padding: 0;
+            }
+            #result li {
+                background-color: #f0f0f0;
+                margin-bottom: 5px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            @media (max-width: 600px) {
+                body {
+                    padding: 10px;
+                }
+                select, textarea, button {
+                    max-width: none;
+                }
+                textarea {
+                    rows: "2";
+                    cols: "20";
+                }
+            }
+        </style>
+        <script>
+            const go = new Go();
+            // remove the message: syscall/js.finalizeRef not implemented
+            go.importObject.env["syscall/js.finalizeRef"] = () => {};
+            WebAssembly.instantiateStreaming(
+                fetch("main.wasm"),
+                go.importObject
+            ).then((result) => {
+                go.run(result.instance);
+            });
+
+            function runSBD() {
+                const lang = document.querySelector("select").value;
+                const text = document.getElementById("text").value;
+                if (!text) {
+                    alert("please input text.");
+                    return;
+                }
+                const resultElem = document.getElementById("result");
+                resultElem.innerHTML = "";
+                const resultText = segment(text, lang);
+                resultText.split("\r").forEach((sentence) => {
+                    const item = document.createElement("li");
+                    item.innerText = sentence;
+                    resultElem.appendChild(item);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>GoSBD Playground</h1>
+            <section>
+                <div>
+                    <label for="lang">Language</label>
+                    <select>
+                        <option value="en">English</option>
+                        <option value="zh">Chinese</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ru">Russian</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="text">Text to segment</label><br />
+                    <textarea id="text" name="text" rows="4" cols="50">Hello world! GoSBD.</textarea>
+                </div>
+                <button onclick="runSBD()">Segment!</button>
+            </section>
+            <section>
+                <h2>Result</h2>
+                <ul id="result"></ul>
+            </section>
+        </div>
+    </body>
+</html>
