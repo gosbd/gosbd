@@ -49,6 +49,13 @@
                 padding: 10px;
                 border-radius: 5px;
             }
+            .header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 20px;
+            }
             @media (max-width: 600px) {
                 body {
                     padding: 10px;
@@ -59,6 +66,11 @@
                 textarea {
                     rows: "2";
                     cols: "20";
+                }
+                .header {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
                 }
             }
         </style>
@@ -93,7 +105,14 @@
     </head>
     <body>
         <div class="container">
-            <h1>GoSBD Playground</h1>
+            <div class="header">
+                <h1>GoSBD Playground</h1>
+                <div>
+                    <div class="github-star-button">
+                    <iframe src="https://ghbtns.com/github-btn.html?user=gosbd&repo=gosbd&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+                    </div>
+                 </div>
+            </div>
             <section>
                 <div>
                     <label for="lang">Language</label>
