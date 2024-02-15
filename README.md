@@ -1,10 +1,14 @@
-# **gosbd: Sentence Boundary Disambiguation (SBD) Library for Go**
+# **GoSBD: Sentence Boundary Disambiguation (SBD) Library for Go**
 
 <img align="right" width="320" src="/artifacts/sbd-gopher.png" alt="gosbd-logo" title="dsbd-logo" />
 
 [![Godoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/gosbd/gosbd)
 
-gosbd is a library for segmenting text into sentences inspired by [pySBD](https://github.com/nipunsadvilkar/pySBD) and [pragmatic_segmenter](https://github.com/diasks2/pragmatic_segmenter). It is rule-based and works out-of-the-box.
+GoSBD is a library for segmenting text into sentences inspired by [pySBD](https://github.com/nipunsadvilkar/pySBD) and [pragmatic_segmenter](https://github.com/diasks2/pragmatic_segmenter). It is rule-based and works out-of-the-box.
+
+## Playground
+
+Try out GoSBD in our [online playground](https://gosbd.pages.dev/).
 
 ## Features
 
