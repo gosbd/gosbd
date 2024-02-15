@@ -58,12 +58,12 @@ func main() {
 
 ## Roadmap
 
-- [ ] Add support for more languages.
+- [x] Add Online Playground.
+- [ ] Setup Codecov for monitoring test coverage.
 - [ ] Implement text cleaner.
+- [ ] Add support for more languages.
 - [ ] Add benchmark test.
 - [ ] Setup GitHub Action for testing.
-- [ ] Setup Codecov for monitoring test coverage.
-- [ ] Add Online Playground.
 
 ## Language Support Roadmap
 
