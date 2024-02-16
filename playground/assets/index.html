@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8" />
         <title>GoSBD Playground</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="wasm_exec.js"></script>
         <style>
             body {
@@ -15,7 +15,8 @@
                 max-width: 800px;
                 margin: auto;
             }
-            h1, h2 {
+            h1,
+            h2 {
                 color: #333;
             }
             .caption {
@@ -27,7 +28,9 @@
                 display: block;
                 margin-bottom: 5px;
             }
-            select, textarea, button {
+            select,
+            textarea,
+            button {
                 width: 100%;
                 max-width: 100%;
                 padding: 10px;
@@ -61,11 +64,63 @@
                 align-items: center;
                 padding-bottom: 20px;
             }
+            /* Custom radio button styles */
+            .radio-group {
+                margin-bottom: 20px;
+            }
+
+            .radio-group input[type="radio"] {
+                display: none; /* Hide original radio buttons */
+            }
+
+            .radio-group label {
+                position: relative;
+                padding-left: 25px;
+                padding-top: 4px;
+                cursor: pointer;
+                display: inline-block;
+                color: #333; /* Text color */
+                margin-right: 10px; /* Space between radio buttons */
+            }
+
+            .radio-group label:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: white;
+                border: 2px solid #007bff; /* Border color */
+            }
+
+            .radio-group input[type="radio"]:checked + label:before {
+                background: #007bff; /* Background color for checked state */
+            }
+
+            .radio-group label:after {
+                content: "";
+                position: absolute;
+                top: 7px;
+                left: 7px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: white;
+                opacity: 0; /* Hidden by default */
+            }
+
+            .radio-group input[type="radio"]:checked + label:after {
+                opacity: 1; /* Show the inner circle for checked state */
+            }
             @media (max-width: 600px) {
                 body {
                     padding: 10px;
                 }
-                select, textarea, button {
+                select,
+                textarea,
+                button {
                     max-width: none;
                 }
                 textarea {
@@ -106,6 +161,31 @@
                     resultElem.appendChild(item);
                 });
             }
+
+            function intlSegmenter() {
+                const lang = document.querySelector("select").value;
+                const text = document.getElementById("text").value;
+                if (!text) {
+                    alert("please input text.");
+                    return;
+                }
+                const resultElem = document.getElementById("result");
+                resultElem.innerHTML = "";
+
+                const segmenter = new Intl.Segmenter(lang, {
+                    granularity: "sentence",
+                });
+                const iterator = segmenter.segment(text)[Symbol.iterator]();
+                const resultText = [];
+                for (let { segment, index } of iterator) {
+                    resultText.push(segment);
+                }
+                resultText.forEach((sentence) => {
+                    const item = document.createElement("li");
+                    item.innerText = sentence;
+                    resultElem.appendChild(item);
+                });
+            }
         </script>
     </head>
     <body>
@@ -113,13 +193,22 @@
             <div class="header">
                 <div>
                     <h1>GoSBD Playground</h1>
-                    <span class="caption">GoSBD is a library for segmenting text into sentences for Go. It is rule-based and works out-of-the-box.</span>
+                    <span class="caption"
+                        >GoSBD is a library for segmenting text into sentences
+                        for Go. It is rule-based and works out-of-the-box.</span
+                    >
                 </div>
                 <div>
                     <div class="github-star-button">
-                    <iframe src="https://ghbtns.com/github-btn.html?user=yohamta&repo=gosbd&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+                        <iframe
+                            src="https://ghbtns.com/github-btn.html?user=yohamta&repo=gosbd&type=star&count=true&size=large"
+                            frameborder="0"
+                            scrolling="0"
+                            width="160px"
+                            height="30px"
+                        ></iframe>
                     </div>
-                 </div>
+                </div>
             </div>
             <section>
                 <div>
@@ -132,10 +221,31 @@
                     </select>
                 </div>
                 <div>
-                    <label for="text">Text to segment</label>
-                    <textarea id="text" name="text" rows="4" cols="50">Hello!! It's a.m.1. Hmm... Well, I figured you would be the perfect face to man the front desk of this fine establishment! With your charming smile and welcoming energy, this job was made for you! Don't worry my friend, I can make this more welcoming! ...If you wish. ...Stay tuned. Hahaha...! 1. The world is a stage. 2. A stage is a world of entertainment.</textarea>
+                    <div class="radio-group">
+                        <input
+                            type="radio"
+                            id="gosbd"
+                            name="segmenter"
+                            value="gosbd"
+                            checked
+                        />
+                        <label for="gosbd">Use GoSBD</label>
+                        <input
+                            type="radio"
+                            id="intlSegmenter"
+                            name="segmenter"
+                            value="intlSegmenter"
+                        />
+                        <label for="intlSegmenter">Use Intl.Segmenter</label>
+                    </div>
                 </div>
-                <button onclick="runSBD()">Segment!</button>
+                <div>
+                    <label for="text">Text to segment</label>
+                    <textarea id="text" name="text" rows="4" cols="50">
+Hello!! It's a.m.1. Hmm... Well, I figured you would be the perfect face to man the front desk of this fine establishment! With your charming smile and welcoming energy, this job was made for you! Don't worry my friend, I can make this more welcoming! ...If you wish. ...Stay tuned. Hahaha...! 1. The world is a stage. 2. A stage is a world of entertainment.</textarea
+                    >
+                </div>
+                <button onclick="intlSegmenter()">Segment!</button>
             </section>
             <section>
                 <h2>Result</h2>
