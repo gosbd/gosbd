@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/gosbd/gosbd/internal/processor"
+	"github.com/yohamta/gosbd/internal/processor"
 )
 
 type Segmenter struct {

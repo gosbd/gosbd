@@ -5,7 +5,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/gosbd/gosbd/internal/rule"
+	"github.com/yohamta/gosbd/internal/rule"
 )
 
 type Abbreviation struct {

@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gosbd/gosbd"
+	"github.com/yohamta/gosbd"
 )
 
 func Test_Russian(t *testing.T) {

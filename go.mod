@@ -1,3 +1,3 @@
-module github.com/gosbd/gosbd
+module github.com/yohamta/gosbd
 
 go 1.21.4

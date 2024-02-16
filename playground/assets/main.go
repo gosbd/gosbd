@@ -3,9 +3,10 @@
 package main
 
 import (
-	"github.com/gosbd/gosbd"
 	"strings"
 	"syscall/js"
+
+	"github.com/yohamta/gosbd"
 )
 
 func segment(this js.Value, inputs []js.Value) interface{} {

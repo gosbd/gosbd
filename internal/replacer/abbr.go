@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gosbd/gosbd/internal/processor"
+	"github.com/yohamta/gosbd/internal/processor"
 )
 
 type AbbreviationReplacer struct {

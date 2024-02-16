@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gosbd/gosbd/internal/processor"
-	"github.com/gosbd/gosbd/internal/rule"
+	"github.com/yohamta/gosbd/internal/processor"
+	"github.com/yohamta/gosbd/internal/rule"
 )
 
 type ListItemReplacer struct {

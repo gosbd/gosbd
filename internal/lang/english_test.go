@@ -1,9 +1,10 @@
 package lang_test
 
 import (
-	"github.com/gosbd/gosbd"
 	"reflect"
 	"testing"
+
+	"github.com/yohamta/gosbd"
 )
 
 func Test_English(t *testing.T) {

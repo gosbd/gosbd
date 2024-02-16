@@ -2,9 +2,10 @@ package lang
 
 import (
 	"fmt"
-	"github.com/gosbd/gosbd/internal/processor"
 	"regexp"
 	"strings"
+
+	"github.com/yohamta/gosbd/internal/processor"
 )
 
 func newRussian() *processor.Config {
