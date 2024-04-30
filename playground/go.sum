@@ -1,4 +1,4 @@
 github.com/fermyon/spin/sdk/go/v2 v2.2.0 h1:zHZdIqjbUwyxiwdygHItnM+vUUNSZ3CX43jbIUemBI4=
 github.com/fermyon/spin/sdk/go/v2 v2.2.0/go.mod h1:kfJ+gdf/xIaKrsC6JHCUDYMv2Bzib1ohFIYUzvP+SCw=
-github.com/yohamta/gosbd v0.1.0 h1:M7i2nP7SjknHaEsWNEp+7ZSP4JKZl7ZdX93khBNbMRk=
-github.com/yohamta/gosbd v0.1.0/go.mod h1:6X4n5OQzhVvzsdqSlxP7lgODKA1wfnSqO06KshpQ4bg=
+github.com/gosbd/gosbd v0.1.0 h1:M7i2nP7SjknHaEsWNEp+7ZSP4JKZl7ZdX93khBNbMRk=
+github.com/gosbd/gosbd v0.1.0/go.mod h1:6X4n5OQzhVvzsdqSlxP7lgODKA1wfnSqO06KshpQ4bg=

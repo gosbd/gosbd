@@ -3,7 +3,7 @@ package lang
 import (
 	"fmt"
 
-	"github.com/yohamta/gosbd/internal/processor"
+	"github.com/gosbd/gosbd/internal/processor"
 )
 
 var (

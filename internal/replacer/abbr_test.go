@@ -3,7 +3,7 @@ package replacer
 import (
 	"testing"
 
-	"github.com/yohamta/gosbd/internal/processor"
+	"github.com/gosbd/gosbd/internal/processor"
 )
 
 func TestAbbreviationReplacer_SearchForAbbreviationsInString(t *testing.T) {

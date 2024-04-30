@@ -6,7 +6,7 @@ import (
 	"strings"
 	"syscall/js"
 
-	"github.com/yohamta/gosbd"
+	"github.com/gosbd/gosbd"
 )
 
 func segment(this js.Value, inputs []js.Value) interface{} {
