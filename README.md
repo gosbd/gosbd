@@ -2,7 +2,7 @@
 
 <img align="right" width="320" src="/artifacts/sbd-gopher.png" alt="gosbd-logo" title="dsbd-logo" />
 
-[![Godoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/yohamta/gosbd)
+[![Godoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/gosbd/gosbd)
 
 GoSBD is a library for segmenting text into sentences inspired by [pySBD](https://github.com/nipunsadvilkar/pySBD) and [pragmatic_segmenter](https://github.com/diasks2/pragmatic_segmenter). It is rule-based and works out-of-the-box.
 
@@ -30,7 +30,7 @@ _Note: Text Cleaning feature is to be implemented. Contributions are greatly wel
 To install gosbd, you can use `go get`:
 
 ```sh
-go get github.com/yohamta/gosbd
+go get github.com/gosbd/gosbd
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ package main
 
 import (
     "fmt"
-    "github.com/yohamta/gosbd"
+    "github.com/gosbd/gosbd"
 )
 
 // This example segments a text string into individual sentences.
