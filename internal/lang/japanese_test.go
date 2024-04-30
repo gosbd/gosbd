@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/yohamta/gosbd"
+	"github.com/gosbd/gosbd"
 )
 
 func Test_Japanese(t *testing.T) {

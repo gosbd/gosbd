@@ -1,11 +1,11 @@
 package gosbd
 
 import (
-	"github.com/yohamta/gosbd/internal/cleaner"
-	"github.com/yohamta/gosbd/internal/lang"
-	"github.com/yohamta/gosbd/internal/processor"
-	"github.com/yohamta/gosbd/internal/replacer"
-	"github.com/yohamta/gosbd/internal/segmenter"
+	"github.com/gosbd/gosbd/internal/cleaner"
+	"github.com/gosbd/gosbd/internal/lang"
+	"github.com/gosbd/gosbd/internal/processor"
+	"github.com/gosbd/gosbd/internal/replacer"
+	"github.com/gosbd/gosbd/internal/segmenter"
 )
 
 // Segmenter segments a text into an list of sentences.

@@ -3,7 +3,7 @@ package replacer
 import (
 	"regexp"
 
-	"github.com/yohamta/gosbd/internal/processor"
+	"github.com/gosbd/gosbd/internal/processor"
 )
 
 var (

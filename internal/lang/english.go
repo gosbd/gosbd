@@ -1,6 +1,6 @@
 package lang
 
-import "github.com/yohamta/gosbd/internal/processor"
+import "github.com/gosbd/gosbd/internal/processor"
 
 type english struct {
 	*processor.Config
