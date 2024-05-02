@@ -61,9 +61,7 @@ func (p *Processor) splitIntoSegments(text string) []string {
 	ss := p.filterEmpty(sentences2)
 	for _, sent := range ss {
 		sent = p.cfg.SubSymbolsRules.All.Apply(sent)
-		for _, s := range p.postProcessSegments(sent) {
-			postProcessedSentences = append(postProcessedSentences, s)
-		}
+		postProcessedSentences = append(postProcessedSentences, p.postProcessSegments(sent)...)
 	}
 	for i, s := range postProcessedSentences {
 		postProcessedSentences[i] = p.cfg.SubSingleQuoteRule.Apply(s)
@@ -163,22 +161,19 @@ func (p *Processor) sentenceBoundaryPunctuation(text string) []string {
 
 	// retain exclamation mark if it is an ending character of a given text
 	text = exclamationRegex.ReplaceAllString(text, "!")
-
 	priorIndex := 0
 	for _, rule := range p.cfg.SentenceBoundaryRules.All {
 		maxIdx := 0
 		for _, match := range rule.Pattern().FindAllStringIndex(text, -1) {
-			for _, m := range match {
-				if m > maxIdx {
-					maxIdx = m
-				}
+			if match[1] > maxIdx {
+				maxIdx = match[1]
 			}
 		}
 		if maxIdx == 0 {
 			continue
 		}
 		text = text[:priorIndex] + rule.Apply(text[priorIndex:])
-		priorIndex = maxIdx
+		priorIndex = maxIdx - 1
 	}
 	return p.filterEmpty(strings.Split(text, "\r"))
 }

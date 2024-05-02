@@ -157,3 +157,48 @@ func Test_processor_checkForParens(t *testing.T) {
 		})
 	}
 }
+
+func Test_processor_sentenceBoundaryPunctuation(t *testing.T) {
+	type fields struct {
+		cfg *Config
+	}
+	type args struct {
+		text string
+	}
+	tests := []struct {
+		fields fields
+		args   args
+		want   []string
+	}{
+		{
+			fields: fields{
+				cfg: Standard(),
+			},
+			args: args{
+				text: `Robert A∯ Heinlein named a character after him in his 1940 short story "Blowups Happen", and science fiction writer A∯ E. van Vogt in his novel "The World of Null\-A", published in 1948.   On March 8, 1949,  fellow science-fiction author L∯ Ron Hubbard wrote to Heinlein referencing Korzybski as an influence on what would become Dianetics:ȸ`,
+			},
+			want: []string{
+				`Robert A∯ Heinlein named a character after him in his 1940 short story "Blowups Happen", and science fiction writer A∯ E.`,
+				`van Vogt in his novel "The World of Null\-A", published in 1948.`,
+				`On March 8, 1949,  fellow science-fiction author L∯ Ron Hubbard wrote to Heinlein referencing Korzybski as an influence on what would become Dianetics:ȸ`,
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.args.text, func(t *testing.T) {
+			p := &Processor{
+				cfg: tt.fields.cfg,
+			}
+			result := p.sentenceBoundaryPunctuation(tt.args.text)
+			if len(result) != len(tt.want) {
+				t.Fatalf("processor.sentenceBoundaryPunctuation() slice length mismatch= %v, want %v", len(result), len(tt.want))
+			}
+			for i := range result {
+				if result[i] != tt.want[i] {
+					t.Fatalf("processor.sentenceBoundaryPunctuation() = %q, want %q", result[i], tt.want[i])
+				}
+			}
+		})
+	}
+}
