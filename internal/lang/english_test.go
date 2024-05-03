@@ -1,7 +1,6 @@
 package lang_test
 
 import (
-	"reflect"
 	"testing"
 
 	"github.com/gosbd/gosbd"
@@ -411,11 +410,35 @@ func Test_English(t *testing.T) {
 				". . . The practice was not abandoned. . . .",
 			},
 		},
+		{
+			name: "Bugfix #12",
+			args: args{
+				text: `Candidates tied to Tehreek-e-Insaf (PTI), the party of Imran Khan, won the most seats in Pakistan’s general election, despite a de facto ban on their campaign. Mr Khan is in prison on multiple charges, which he says are politically motivated. The Pakistan Muslim League-Nawaz (PML-N), which was widely expected to win, came second. PML-N is the party of Nawaz Sharif, Mr Khan’s arch-rival. It will form a coalition government with the Pakistan Peoples Party, which came third. Mr Khan’s supporters said the election had been rigged, which the PML-N denied. The head of the army claimed the poll had been “free and unhindered”.`,
+			},
+			want: []string{
+				"Candidates tied to Tehreek-e-Insaf (PTI), the party of Imran Khan, won the most seats in Pakistan’s general election, despite a de facto ban on their campaign.",
+				"Mr Khan is in prison on multiple charges, which he says are politically motivated.",
+				"The Pakistan Muslim League-Nawaz (PML-N), which was widely expected to win, came second.",
+				"PML-N is the party of Nawaz Sharif, Mr Khan’s arch-rival.",
+				"It will form a coalition government with the Pakistan Peoples Party, which came third.",
+				"Mr Khan’s supporters said the election had been rigged, which the PML-N denied.",
+				"The head of the army claimed the poll had been “free and unhindered”.",
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			sg := gosbd.NewSegmenter("en")
-			if got := sg.Segment(tt.args.text); !reflect.DeepEqual(got, tt.want) {
+			got := sg.Segment(tt.args.text)
+			for i, v := range got {
+				if i >= len(tt.want) {
+					break
+				}
+				if v != tt.want[i] {
+					t.Errorf("Segmenter.Segment() = %#v, want %#v", v, tt.want[i])
+				}
+			}
+			if len(got) != len(tt.want) {
 				t.Errorf("Segmenter.Segment() = %#v, want %#v", got, tt.want)
 			}
 		})
