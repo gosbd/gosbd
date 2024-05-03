@@ -53,7 +53,7 @@ func newSubEscapedRegexReservedCharacters() subEscapedRegexReservedCharacters {
 	subRightParen := rule.NewRule(regexp.MustCompile(`\\\\\)`), `)`)
 	subLeftBracket := rule.NewRule(regexp.MustCompile(`\\\\\[`), `[`)
 	subRightBracket := rule.NewRule(regexp.MustCompile(`\\\\]`), `]`)
-	subDash := rule.NewRule(regexp.MustCompile(`\\-`), `-`)
+	subDash := rule.NewRule(regexp.MustCompile(`\\\\-`), `-`)
 	all := rule.Rules{subLeftParen, subRightParen, subLeftBracket, subRightBracket, subDash}
 
 	return subEscapedRegexReservedCharacters{
