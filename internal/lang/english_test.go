@@ -435,6 +435,21 @@ func Test_English(t *testing.T) {
 				"Some can be -- if I may say so? -- a bit questionable.",
 			},
 		},
+		{
+			name: "Issue #14",
+			args: args{
+				text: `The Academy Award for Best Production Design recognizes achievement for art direction in film. The category's original name was Best Art Direction, but was changed to its current name in 2012 for the 85th Academy Awards.[1] This change resulted from the Art Directors' bggranch of the Academy of Motion Picture Arts and Sciences (AMPAS) being renamed the Designers' branch. Since 1947, the award is shared with the set decorators. It is awarded to the best interior design in a film.[2] The films below are listed with their production year (for example, the 2000 Academy Award for Best Art Direction is given to a film from 1999). In the lists below, the winner of the award for each year is shown first, followed by the other nominees in alphabetical order.`,
+			},
+			want: []string{
+				"The Academy Award for Best Production Design recognizes achievement for art direction in film.",
+				"The category's original name was Best Art Direction, but was changed to its current name in 2012 for the 85th Academy Awards.[1]",
+				"This change resulted from the Art Directors' bggranch of the Academy of Motion Picture Arts and Sciences (AMPAS) being renamed the Designers' branch.",
+				"Since 1947, the award is shared with the set decorators.",
+				"It is awarded to the best interior design in a film.[2]",
+				"The films below are listed with their production year (for example, the 2000 Academy Award for Best Art Direction is given to a film from 1999).",
+				"In the lists below, the winner of the award for each year is shown first, followed by the other nominees in alphabetical order.",
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
