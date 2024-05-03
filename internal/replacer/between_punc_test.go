@@ -44,7 +44,7 @@ func TestBetweenPunctuation_Replace(t *testing.T) {
 			args: args{
 				text: `Mix it, put it in the oven, and -- voila! -- you have cake. Some can be -- if I may say so? -- a bit questionable.`,
 			},
-			want: `Mix it, put it in the oven, and \-\- voila&ᓴ& \-\- you have cake. Some can be \-\- if I may say so&ᓷ& \-\- a bit questionable.`,
+			want: `Mix it, put it in the oven, and -- voila&ᓴ& -- you have cake. Some can be -- if I may say so&ᓷ& -- a bit questionable.`,
 		},
 		{
 			args: args{

@@ -425,6 +425,16 @@ func Test_English(t *testing.T) {
 				"The head of the army claimed the poll had been “free and unhindered”.",
 			},
 		},
+		{
+			name: "Regression #12",
+			args: args{
+				text: "Mix it, put it in the oven, and -- voila! -- you have cake. Some can be -- if I may say so? -- a bit questionable.",
+			},
+			want: []string{
+				"Mix it, put it in the oven, and -- voila! -- you have cake.",
+				"Some can be -- if I may say so? -- a bit questionable.",
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
