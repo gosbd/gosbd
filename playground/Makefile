@@ -6,6 +6,7 @@ build:
 	cp "$(WASM_EXEC_TINY)" .
 	GOOS=darwin tinygo build -o main.wasm
 	mv main.wasm ./assets/main.wasm
+	mv wasm_exec.js ./assets/wasm_exec.js
 
 install:
 	brew tap tinygo-org/tools
