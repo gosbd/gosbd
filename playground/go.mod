@@ -1,8 +1,7 @@
 module gosbd/wasm
 
-go 1.21.4
+go 1.22
 
-require (
-	github.com/fermyon/spin/sdk/go/v2 v2.2.0 // indirect
-	github.com/gosbd/gosbd v0.1.0 // indirect
-)
+toolchain go1.22.2
+
+require github.com/gosbd/gosbd v0.1.3
