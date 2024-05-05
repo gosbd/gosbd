@@ -59,6 +59,7 @@ func main() {
 ## Roadmap
 
 - [x] Add Online Playground.
+- [ ] Add chuking feature with overlapping option.
 - [ ] Setup Codecov for monitoring test coverage.
 - [ ] Implement text cleaner.
 - [ ] Add support for more languages.
