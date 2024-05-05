@@ -1,10 +1,10 @@
-# **GoSBD: Text Splitter (Sentence Boundary Disambiguation) Library for Go**
+# **GoSBD: Sentence Splitting (Sentence Boundary Disambiguation) Library for Go**
 
 <img align="right" width="320" src="/artifacts/sbd-gopher.png" alt="gosbd-logo" title="dsbd-logo" />
 
 [![Godoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/gosbd/gosbd)
 
-GoSBD is a library for segmenting text into sentences inspired by [pySBD](https://github.com/nipunsadvilkar/pySBD) and [pragmatic_segmenter](https://github.com/diasks2/pragmatic_segmenter). It is rule-based and works out-of-the-box.
+GoSBD is a library for segmenting text into sentences, designed to make it easier to build Retrieval Augmented Generation (RAG) systems in Go. It is inspired by [pySBD](https://github.com/nipunsadvilkar/pySBD) and [pragmatic_segmenter](https://github.com/diasks2/pragmatic_segmenter), and works out-of-the-box with a rule-based approach.
 
 ## Playground
 
@@ -12,10 +12,11 @@ Try out GoSBD in our [online playground](https://gosbd.pages.dev/).
 
 ## Features
 
-- **Sentence Segmentation**: Efficiently breaks down a block of text into individual sentences.
+- **Sentence Splitting**: Efficiently breaks down a block of text into individual sentences.
 - **Lightweight and Easy Integration**: Designed to be lightweight and easy to integrate into existing Go projects.
 - **High Accuracy**: Offers high accuracy in sentence segmentation. For more details, see [pySBD](https://github.com/nipunsadvilkar/pySBD).
-- **Non-Destructive Segmentation**: Segments text into sentences without altering the original content.
+- **Fast Sentence Splitting**: GoSBD aims to provide high-performance sentence splitting by leveraging Go's efficiency.
+- **Non-Destructive Splitting**: Segments text into sentences without altering the original content.
 - **Language-Specific Configuration**: Adaptable to handle punctuation rules specific to different languages.
 - **Text Cleaning**: Equipped with features to manage and clean noisy text, including:
     - Handling irregular newline characters and spacing
@@ -100,11 +101,11 @@ We welcome contributions that help us add support for these languages. Please fe
 
 ## Motivation
 
-Sentence Boundary Disambiguation (SBD) is a step in the preprocessing pipeline of Natural Language Processing (NLP). It involves the task of correctly identifying the boundaries of sentences within a block of text, which is fundamental for subsequent tasks such as Machine Translation, Named Entity Recognition, and Coreference Resolution.
+Sentence splitting is a crucial step in the preprocessing pipeline of Natural Language Processing (NLP) tasks, especially for building Retrieval Augmented Generation (RAG) systems. RAG systems rely on accurately segmented sentences to retrieve relevant information and generate coherent responses.
 
-The importance of accurate sentence segmentation has been amplified with the widespread use of Large Language Models (LLMs). While the libraries [pragmatic_segmenter](https://github.com/diasks2/pragmatic_segmenter) and [pySBD](https://github.com/nipunsadvilkar/pySBD) are known for their high accuracy and efficiency, there are no equivalent libraries available in Go.
+While libraries like pragmatic_segmenter and pySBD are known for their high accuracy and efficiency in sentence splitting, there are no equivalent libraries available in Go. This poses a challenge for developers building RAG systems in Go, as they need to rely on external libraries or implement their own sentence splitting logic.
 
-This library seeks to bridge this gap by offering a rule-based sentence segmentation solution in Go. The ability to perform sentence segmentation in Go offers significant advantages, especially when using LLMs via an API. For instance, it allows tasks such as Retrieval Augmented Generation (RAG) and summarization to be completed entirely within Go. This not only streamlines the development process, but it can also lead to faster execution times due to Go's performance characteristics.
+GoSBD aims to bridge this gap by providing a reliable and efficient sentence splitting solution in Go. By offering a native Go library for sentence splitting, GoSBD simplifies the process of building RAG systems and other NLP applications entirely within the Go ecosystem. This not only streamlines the development workflow but also enables faster execution times by leveraging Go's performance characteristics.
 
 ## Acknowledgement
 
