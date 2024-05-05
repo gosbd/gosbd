@@ -1,4 +1,4 @@
-# **GoSBD: Sentence Boundary Disambiguation (SBD) Library for Go**
+# **GoSBD: Text Splitter (Sentence Boundary Disambiguation) Library for Go**
 
 <img align="right" width="320" src="/artifacts/sbd-gopher.png" alt="gosbd-logo" title="dsbd-logo" />
 
