@@ -134,7 +134,9 @@ func (l ListItemReplacer) spaceBetweenListItems(text string, pattern *regexp.Reg
 }
 
 func (l ListItemReplacer) replacePeriodsInNumberedList(text string) string {
-	pattern := regexp.MustCompile(`\s\d{1,2}\.\s|^\d{1,2}\.\s|\s\d{1,2}\.\)|^\d{1,2}\.\)|\s-\d{1,2}\.\s|^-\d{1,2}\.\s|\s⁃\d{1,2}\.\s|^⁃\d{1,2}\.\s|\s-\d{1,2}\.\)|^-\d{1,2}\.\)|\s⁃\d{1,2}\.\)|^⁃\d{1,2}\.\)`)
+	pattern := regexp.MustCompile(
+		`\s\d{1,2}\.\s|^\d{1,2}\.\s|\s\d{1,2}\.\)|^\d{1,2}\.\)|\s-\d{1,2}\.\s|^-\d{1,2}\.\s|\s⁃\d{1,2}\.\s|^⁃\d{1,2}\.\s|\s-\d{1,2}\.\)|^-\d{1,2}\.\)|\s⁃\d{1,2}\.\)|^⁃\d{1,2}\.\)`,
+	)
 	return l.scanLists(text, pattern, "♨", false)
 }
 
@@ -159,7 +161,14 @@ func (l ListItemReplacer) scanLists(text string, re *regexp.Regexp, replacement 
 	return text
 }
 
-func (l ListItemReplacer) substituteFoundListItems(text string, re *regexp.Regexp, val int, replacement string, parens bool) string {
+func (l ListItemReplacer) substituteFoundListItems(
+	text string,
+	re *regexp.Regexp,
+	val int,
+	replacement string,
+	parens bool,
+) string {
+	// TODO: Investigate the usage of `parens` bool parameter in pysbd.
 	replaceItem := func(match string, repl string) string {
 		i := strings.Index(match, strconv.Itoa(val))
 		if i == -1 {
@@ -192,7 +201,10 @@ func (l ListItemReplacer) substituteFoundListItems(text string, re *regexp.Regex
 	})
 }
 
-func (l ListItemReplacer) extractAlphabeticalListLettersWithParens(text string, romanNumeral bool) ([]string, map[string]alphabet) {
+func (l ListItemReplacer) extractAlphabeticalListLettersWithParens(
+	text string,
+	romanNumeral bool,
+) ([]string, map[string]alphabet) {
 	isAlphabet := isRomanNumerals
 	if !romanNumeral {
 		isAlphabet = isLatinNumerals
@@ -208,7 +220,10 @@ func (l ListItemReplacer) extractAlphabeticalListLettersWithParens(text string, 
 	return list, isAlphabet
 }
 
-func (l ListItemReplacer) extractAlphabeticalListLettersWithPeriods(text string, romanNumeral bool) ([]string, map[string]alphabet) {
+func (l ListItemReplacer) extractAlphabeticalListLettersWithPeriods(
+	text string,
+	romanNumeral bool,
+) ([]string, map[string]alphabet) {
 	isAlphabet := isRomanNumerals
 	if !romanNumeral {
 		isAlphabet = isLatinNumerals
@@ -255,7 +270,14 @@ func (l ListItemReplacer) iterateAlphabetArray(text string, romanNumeral bool, p
 	return text
 }
 
-func (l ListItemReplacer) otherItemsReplacement(text string, val string, i int, isAlphabet map[string]alphabet, list []string, parens bool) string {
+func (l ListItemReplacer) otherItemsReplacement(
+	text string,
+	val string,
+	i int,
+	isAlphabet map[string]alphabet,
+	list []string,
+	parens bool,
+) string {
 	if len(isAlphabet) == 0 || len(list) == 0 {
 		return text
 	}
@@ -273,7 +295,14 @@ func (l ListItemReplacer) otherItemsReplacement(text string, val string, i int, 
 	return l.replaceCorrectAlphabetList(text, val, parens)
 }
 
-func (l ListItemReplacer) lastArrayItemReplacement(text string, val string, i int, isAlphabet map[string]alphabet, list []string, parens bool) string {
+func (l ListItemReplacer) lastArrayItemReplacement(
+	text string,
+	val string,
+	i int,
+	isAlphabet map[string]alphabet,
+	list []string,
+	parens bool,
+) string {
 	if len(isAlphabet) == 0 && len(list) == 0 {
 		return text
 	}
