@@ -183,6 +183,18 @@ func Test_processor_sentenceBoundaryPunctuation(t *testing.T) {
 				`On March 8, 1949,  fellow science-fiction author L∯ Ron Hubbard wrote to Heinlein referencing Korzybski as an influence on what would become Dianetics:ȸ`,
 			},
 		},
+		{
+			fields: fields{
+				cfg: Standard(),
+			},
+			args: args{
+				text: `He went to school.    He never returned.`,
+			},
+			want: []string{
+				`He went to school.`,
+				`He never returned.`,
+			},
+		},
 	}
 
 	for _, tt := range tests {

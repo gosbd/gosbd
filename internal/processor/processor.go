@@ -172,6 +172,9 @@ func (p *Processor) sentenceBoundaryPunctuation(text string) []string {
 		if maxIdx == 0 {
 			continue
 		}
+		if priorIndex > len(text) {
+			priorIndex = len(text)
+		}
 		text = text[:priorIndex] + rule.Apply(text[priorIndex:])
 		priorIndex = maxIdx - 1
 	}
